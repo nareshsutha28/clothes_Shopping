@@ -1,0 +1,43 @@
+{% extends 'header.html' %}
+<!-- Navbar Start -->
+{% block content %}
+
+<center>
+
+
+	
+	<!-- <div class="row px-xl-5"> -->
+		<h1>Login Form</h1>
+        {% if msg %}
+			<p style='color:blue'>{{msg}}</p>
+        {% endif %}
+		<div class="col-lg-4 mb-5">
+			<div class="contact-form">
+				<div id="success"></div>
+			<form name="login" novalidate="novalidate" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+				<div class="control-group mb-4">
+					<input type="email" class="form-control"  name="email" placeholder="Your Email"
+						required="required" data-validation-required-message="Please enter your email" />
+						<p class="help-block text-danger"></p>
+					</div>
+				
+				<div class="control-group mb-4">
+					<input type="password" class="form-control" name="password" placeholder="Your Password "
+					required="required" data-validation-required-message="Please enter your password" />
+					<p class="help-block text-danger"></p>
+				</div>
+				</div>
+				<div>
+					<button class="btn btn-primary py-2 px-4" type="submit" >login</button>
+				</div>
+			</form>
+			<p style="margin:1.5em;">If password forgot then please <a href="{% url 'forgot_password' %}">Click Here</a></p>
+		</div>
+	</div>
+   
+</div>
+
+<!-- Contact End -->
+</center>
+{% endblock %}

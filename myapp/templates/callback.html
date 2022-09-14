@@ -1,0 +1,29 @@
+{% extends 'header1.html'%}
+
+{% block content %}
+<body>
+    <h2>Callback Messsage: </h2>                    <br>
+    <h3> Checksum Verification: {{ message }} </h3> <br>
+    MID: {{ MID }}                                  <br>
+    TXNID: {{ TXNID }}                              <br>
+    ORDERID: {{ ORDERID }}                          <br>
+    BANKTXNID: {{ BANKTXNID }}                      <br>
+    TXNAMOUNT: {{ TXNAMOUNT }}                      <br>
+    CURRENCY: {{ CURRENCY }}                        <br>
+    <h3> STATUS: {{ STATUS }} </h3>                 <br>
+    RESPCODE: {{ RESPCODE }}                        <br>
+    RESPMSG: {{ RESPMSG }}                          <br>
+    TXNDATE: {{ TXNDATE }}                          <br>
+    GATEWAYNAME: {{ GATEWAYNAME }}                  <br>
+    BANKNAME: {{ BANKNAME }}                        <br>
+    BIN_NAME: {{ BIN_NAME }}                        <br>
+    PAYMENTMODE: {{ PAYMENTMODE }}                  <br>
+    CHECKSUMHASH: {{ CHECKSUMHASH }}
+
+    <div class="card-footer border-secondary bg-transparent">
+              <a href="{% url 'index' %}">
+                  <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Back To Home</button>
+                </a>          
+
+    </div>
+{% endblock %}

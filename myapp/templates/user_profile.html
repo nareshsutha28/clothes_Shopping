@@ -1,0 +1,95 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<body>
+     
+    <!-- Contact Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+        </div>
+		<center>
+
+			<!-- <div class="row px-xl-5"> -->
+				<div class="col-lg-4 mb-5">
+					<div class="contact-form">
+                        {% if msg %}
+						<p style='color:blue'>{{msg}}</p>
+                        {% endif %}
+                    <form name="signup" novalidate="novalidate" method="post" action="{% url 'user_profile' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <img src={{user.profile.url}} class="mb-3" alt="myprofile" width="200px" height="200px">
+                        <h2 class="font-weight-semi-bold text-uppercase mb-3"><span class="px-2">{{user.fname}} {{user.lname}}</span></h2>
+						
+                        <div class="control-group">
+
+                            <select name="usertype" class="form-control" disabled>
+                                {% if user.usertype == "user" %}
+                                    <option value="user" selected>User</option>
+                                    <option value="seller">Seller</option>
+
+                                {% else %}
+                                    <option value="user" >User</option>
+                                    <option value="seller" selected>Seller</option>
+                                {% endif %}
+                            </select>
+                        </div><br>
+
+                        <div class="control-group">
+	                            <input type="text" class="form-control"  name="fname" value={{user.fname}} placeholder="Your First Name"
+                                required="required"  />
+								<p class="help-block text-danger"></p>
+							</div>
+						<div class="control-group">
+							<input type="text" class="form-control" value={{user.lname}} name="lname" placeholder="Your Last Name"
+								required="required" />
+								<p class="help-block text-danger"></p>
+								</div>
+						
+							<div class="control-group">
+								<input type="email" class="form-control" value={{user.email}} name="email" placeholder="Your Email"
+                                required="required" disabled />
+                            <p class="help-block text-danger"></p>
+                        </div>
+						<div class="control-group">
+							<input type="text" class="form-control" value={{user.mobile}}  name="mobile" placeholder="Your Mobile Number"
+								required="required" />
+								<p class="help-block text-danger"></p>
+								</div>
+                        <div class="control-group">
+							<input type="text" class="form-control" value={{user.city}} name="city" placeholder="Your city"
+							required="required"  />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+						<div class="control-group">
+                        
+                        <p class="mb-1" style="color:blue; text-align:left; font-size:small;">{{user.profile.url}}</p>
+							
+                        <input type="file" class="form-control mb-5" name="profile" />
+                            
+                        </div>
+						
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit" >Update profile</button>
+                        </div>
+                    </form>
+					                </div>
+            </div>
+           
+    </div>
+
+    <!-- Contact End -->
+</center>
+
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Contact Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="font-weight-semi-bold text-uppercase mb-3"><span class="px-2">Edit Your Product</span></h2>
+        </div>
+		<center>
+
+            
+
+			<!-- <div class="row px-xl-5"> -->
+				<div class="col-lg-4 mb-5">
+					<div class="contact-form">
+                        {% if msg %}
+						<p style='color:blue'>{{msg}}</p>
+                        {% endif %}
+                    <form name="product" novalidate="novalidate" method="post" action="{% url 'seller_edit_product' pk=product.pk %}" enctype="multipart/form-data">
+						
+                        {% csrf_token %}
+                        <div class="control-group">
+                            {% if product.product_category == 'woman_wear' %}
+							<select name="product_category" class="form-control">
+                                <option value="woman_wear" selected>Woman's wear</option>
+                                <option value="man_wear">Man's wear</option>
+                                <option value="kid_wear">Kid's wear</option>
+                            </select>
+                            {% elif product.product_category == 'man_wear' %}
+							<select name="product_category" class="form-control">
+                                <option value="woman_wear">Woman's wear</option>
+                                <option value="man_wear" selected>Man's wear</option>
+                                <option value="kid_wear">Kid's wear</option>
+                            </select>
+                            {% elif product.product_category == 'kid_wear' %}
+							<select name="product_category" class="form-control">
+                                <option value="woman_wear" selected>Woman's wear</option>
+                                <option value="man_wear">Man's wear</option>
+                                <option value="kid_wear" selected>Kid's wear</option>
+                            </select>
+                            {% else %}
+							<select name="product_category" class="form-control">
+                                <option value="woman_wear">Woman's wear</option>
+                                <option value="man_wear">Man's wear</option>
+                                <option value="kid_wear">Kid's wear</option>
+                            </select>
+                            {% endif %}
+                        </div><br>
+
+						<div class="control-group">
+							<input type="text" class="form-control"  name="product_name" value="{{product.product_name}}"
+								required="required" />
+								
+								</div><br>
+						
+							<div class="control-group">
+								<input type="text" class="form-control" name="product_prise" value="{{product.product_prise}}"
+                                required="required"  />
+                            
+                        </div><br>
+
+						<div class="control-group">
+							<input type="text" class="form-control"  name="product_discount" value="{{product.product_discount}}"
+								required="required"/>
+								
+								</div><br>
+                        <div class="control-group  d-flex">
+                                    {% for i in color %}
+                                    {% if i in p_color %}
+                                    <input type="checkbox" class="form-control" style="width: 15px; margin-right: 15px;" name="product_color" value="{{i}}" checked>
+                                    <label style="align-self: flex-end; margin-right: 30px;"> {{i}}</label>
+                                    {% else %}
+                                    <input type="checkbox" class="form-control" style=" margin-right: 15px;" name="product_color" value="{{i}}" >
+                                    <label style="align-self: flex-end; margin-right: 30px;"> {{i}}</label>
+                                    {% endif %}
+                                    {% endfor %}
+                                
+                        </div><br>
+   
+
+                        <div class="control-group  d-flex">
+                            {% for i in size %}
+                            {% if i in p_size %}
+                            <input type="checkbox" class="form-control" style="width: 15px; margin-right: 15px;" name="product_size" value="{{i}}" checked>
+                            <label style="align-self: flex-end; margin-right: 30px;"> {{i}}</label>
+                            {% else %}
+                            <input type="checkbox" class="form-control" style="width: 15px; margin-right: 15px;" name="product_size" value="{{i}}" >
+                            <label style="align-self: flex-end; margin-right: 30px;"> {{i}}</label>
+                            {% endif %}
+                            {% endfor %}
+                        
+                </div><br>
+                        <div class="control-group">
+
+                            <textarea class="form-control" name="product_disc"  rows="3" >{{product.product_disc}}</textarea>
+                        </div><br>
+
+
+						<div class="control-group"> 
+                            <img src="{{product.product_image.url}}" height="250px" ><br>   
+
+                        	<input type="file" class="form-control" name="product_image" />
+                           
+                        </div><br>
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit" >Update Product</button>
+                        </div>
+                    </form>
+					
+            </div>
+           
+    </div>
+
+    <!-- Contact End -->
+</center>
+
+
+</body>
+</html>
+{% endblock %}

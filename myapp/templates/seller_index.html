@@ -1,0 +1,132 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    
+    <!-- Featured Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Featured End -->
+
+
+    <!-- Categories Start -->
+    
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <p class="text-right">{{man_wear.count}} Products</p>
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{% static 'img/cat-1.jpg' %}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">Men's dresses</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <p class="text-right">{{woman_wear.count}} Product</p>
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{% static 'img/cat-2.jpg' %}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">Women's dresses</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <p class="text-right">{{kid_wear.count}} Product</p>
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{% static 'img/cat-3.jpg' %}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">Baby's dresses</h5>
+                </div>
+            </div>
+    
+    <!-- Categories End -->
+
+
+    <!-- Products Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2">My Product</span></h2>
+        </div>
+        <div class="row px-xl-5 pb-3">
+            
+            {% for i in myproduct %} 
+            
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="card product-item border-0 mb-4">
+                        <a href="{% url 'seller_product_profile' pk=i.pk %}">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0" >
+                            <img class="img-fluid" src={{i.product_image.url}} alt="" style="height: 300px; width:270px" >
+                            
+                            <span style="position: absolute; top:15px; right:15px;background-color: antiquewhite; border-radius: 100%; font-weight:600;">{{i.product_discount}}% OFF</span>
+                    </div>
+                    
+                  <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                      <h6 class="text-truncate mb-3">{{i.product_name}}</h6>
+                      <div class="d-flex justify-content-center">
+                          
+                        <h6>&#8377 {{i.product_cprise}}</h6><h6 class="text-muted ml-2"><del>&#8377 {{i.product_prise}} </del></h6>
+                        </div>
+                    </a>
+                    </div>
+                    
+                    <div class="card-footer d-flex justify-content-between bg-light border">
+                        <a href="{% url 'delete_product' pk=i.pk %}" class="btn btn-sm text-dark p-0"><i class="fa fa-trash text-primary mr-1"></i>Delete </a>
+                        <a href="{% url 'seller_edit_product' pk=i.pk %}"><button class="btn btn-sm text-dark p-0"><i class="fas fa-edit text-primary mr-1"></i>Edit </button></a>
+                        
+                    </div>
+                </div>
+            </div>
+          
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Products End -->
+
+
+
+
+
+
+   
+
+ 
+</body>
+<script>
+
+</script>
+</html>
+{% endblock %}

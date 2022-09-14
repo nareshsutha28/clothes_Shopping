@@ -1,0 +1,63 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+   
+
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5 ">
+        <h1 >Myorder</h1>
+    </div>
+    <!-- Page Header End -->
+
+
+
+    <!-- Shop Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+                    
+                    {% for i in myorder %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <a href="{% url 'view_product' pk=i.pk %}">
+
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="{{i.product.product_image.url}}" style="height:270px; width:250px" alt="">
+                                    
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">{{i.product.product_name}}</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>&#8377 {{i.product.product_cprise}}</h6><h6 class="text-muted ml-2"><del>&#8377 {{i.product.product_prise}}</del></h6>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="card-footer d-flex justify-content-center bg-light border">
+                                <h6>{{i.time}}</h6>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+    <!-- Shop End -->
+
+
+
+    <!-- Footer Start -->
+</body>
+
+</html>
+
+{% endblock %}
