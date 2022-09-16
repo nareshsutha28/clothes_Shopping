@@ -37,6 +37,7 @@ urlpatterns = [
         path('pay/', views.pay, name='pay'),
         path('callback/', views.callback, name='callback'),
         path('myorder/', views.myorder, name='myorder'),
+        path('seller_by_category/<str:pc>', views.seller_by_category, name='seller_by_category'),
 
 
 

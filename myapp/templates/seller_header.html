@@ -101,9 +101,9 @@
             <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                 <div class="navbar-nav w-100 overflow-hidden" style="height: auto">
                     
-                    <a href="" class="nav-item nav-link">Woman's wear</a>
-                    <a href="" class="nav-item nav-link">Man's wear</a>
-                    <a href="" class="nav-item nav-link">Kid's wear</a>
+                    <a href="{% url 'seller_by_category' pc='woman_wear' %}" class="nav-item nav-link">Woman's wear</a>
+                    <a href="{% url 'seller_by_category' pc='man_wear' %}" class="nav-item nav-link">Man's wear</a>
+                    <a href="{% url 'seller_by_category' pc='kid_wear' %}" class="nav-item nav-link">Kid's wear</a>
                     
                 </div>
             </nav>
@@ -119,7 +119,7 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <a href="{% url 'seller_index' %}" class="nav-item nav-link">Home</a>
-                        <a href="{% url 'seller_myproduct' %}" class="nav-item nav-link">My Product</a>
+                        <a href="{% url 'seller_by_category' pc='all' %}" class="nav-item nav-link">My Product</a>
                         <a href="{% url 'seller_add_product' %}" class="nav-item nav-link">Add Product</a>
                         <a href="{% url 'seller_contact' %}" class="nav-item nav-link">Contact</a>
                         
@@ -163,7 +163,7 @@
                     <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-dark mb-2" href="{% url 'seller_index' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                        <a class="text-dark mb-2" href="{% url 'seller_myproduct' %}"><i class="fa fa-angle-right mr-2"></i>My Product</a>
+                        <a class="text-dark mb-2" href="{% url 'seller_by_category' pc='all' %}"><i class="fa fa-angle-right mr-2"></i>My Product</a>
                         <a class="text-dark mb-2" href="{% url 'seller_add_product' %}"><i class="fa fa-angle-right mr-2"></i>Add Product</a>
                         
                         <a class="text-dark mb-2" href="{% url 'seller_contact' %}"><i class="fa fa-angle-right mr-2"></i>Contact</a>
@@ -173,7 +173,7 @@
                     <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-dark mb-2" href="{% url 'seller_index' %}"><i class="fa fa-angle-right mr-2"></i>Home</a> -->
-                        <a class="text-dark mb-2" href="{% url 'seller_myproduct' %}"><i class="fa fa-angle-right mr-2"></i>My Product</a>
+                        <a class="text-dark mb-2" href="{% url 'seller_by_category' pc='all' %}"><i class="fa fa-angle-right mr-2"></i>My Product</a>
                         <a class="text-dark mb-2" href="{% url 'seller_add_product' %}"><i class="fa fa-angle-right mr-2"></i>Add Product</a>
                         
                         <a class="text-dark" href="{% url 'seller_contact' %}"><i class="fa fa-angle-right mr-2"></i>Contact Us</a> -->

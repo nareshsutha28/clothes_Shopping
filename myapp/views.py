@@ -447,7 +447,6 @@ def add_to_cart(request,pk):
         product=Product_clothes.objects.get(pk=pk)
         try:
             Cart.objects.get(user=user, product=product, payment_status='pending')
-
         except:    
             Cart.objects.create(
             user=user,
@@ -456,11 +455,12 @@ def add_to_cart(request,pk):
             )
         carts_count=Cart.objects.filter(user=user, payment_status='pending')
         request.session['carts_count']=len(carts_count)    
+        return redirect(by_category, pc='all')
 
-        return redirect(shop)
- 
     except:
         return render (request,'login.html')
+
+ 
 
     
 def remove_from_cart(request,pk):
@@ -574,3 +574,13 @@ def myorder(request):
     user=User.objects.get(email=request.session['email'])
     myorder=Cart.objects.filter(user=user,payment_status='paid')
     return render(request, 'myorder.html', {'myorder':myorder})
+
+
+def seller_by_category(request, pc):
+    user=User.objects.get(email=request.session['email'])
+    myproduct=Product_clothes.objects.filter(seller=user, product_category=pc)
+
+    if len(myproduct)==0:
+        myproduct=Product_clothes.objects.filter(seller=user)
+
+    return render(request, 'seller_myproduct.html', {'myproduct':myproduct})
